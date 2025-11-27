@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://conversationPage.title"
+>
+    <data>
+        <instance id="messageDc" class="com.company.chattry.entity.Message">
+            <fetchPlan extends="_base"/>
+            <loader id="messageDl">
+                <query><![CDATA[
+            select m from Message m where m.id = :id
+        ]]></query>
+            </loader>
+        </instance>
+
+        <collection id="usersDc" class="com.company.chattry.entity.User">
+            <fetchPlan extends="_base"/>
+            <loader id="usersDl" readOnly="true">
+                <query><![CDATA[select e from User e]]></query>
+            </loader>
+        </collection>
+    </data>
+
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout>
+        <vbox alignSelf="CENTER" classNames="chat-list-background ms-xl mb-m" height="70%" width="100%">
+
+            <!-- Top: Avatar + Name -->
+            <hbox alignItems="CENTER" justifyContent="BETWEEN" width="100%">
+                <image id="avatarImage"
+                       width="60px"
+                       height="60px"
+                       classNames="rounded"
+                       property="avatar"
+                       resource="fileStorage"/>
+                <span id="senderMsg"
+                      classNames="chat-list-message m-0"
+                      dataContainer="messageDc"
+                      property="sender"/>
+            </hbox>
+
+            <!-- Message content -->
+            <span width="100%" height="30px"
+                  id="contentMsg"
+                  dataContainer="messageDc"
+                  property="content"/>
+
+
+            <hbox width="100%" justifyContent="BETWEEN" alignItems="CENTER">
+                <button id="attachment" visible="true" icon="vaadin:download"></button>
+                <span id="sendedAtMsg" dataContainer="messageDc" property="sentAt"/>
+            </hbox>
+
+        </vbox>
+        <vbox width="90%" height="40%">
+            <h3 themeNames="primary" alignSelf="CENTER" text=" Scrivi la tua risposta" > </h3>
+            <vbox id="mainContainer"
+                  width="90%"
+                  alignItems="CENTER"
+                  justifyContent="START"
+                  spacing="true" >
+
+                <!-- Contenitore colonna con larghezza 75% -->
+                <vbox id="contentBox" width="100%" spacing="true" alignItems="STRETCH">
+
+                    <entityComboBox id="reciverComboBox"
+                                    itemsContainer="usersDc"
+                                    dataContainer="messageDc"
+                                    property="reciver">
+                        <actions>
+                            <action id="entityClear" type="entity_clear"/>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityOpen" type="entity_open"/>
+                        </actions>
+                    </entityComboBox>
+
+                    <entityPicker id="senderField"
+                                  dataContainer="messageDc"
+                                  property="sender">
+                        <actions>
+                            <action id="entityLookupAction" type="entity_lookup"/>
+                            <action id="entityClearAction" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+
+                    <textArea id="contentFieldW" classNames="backgroundnav"
+                              placeholder="Scrivi qui il messaggio..."
+                              height="150px" />
+
+                    <vbox justifyContent="CENTER" >
+
+                        <checkbox  alignSelf="BASELINE" id="timeProgrammer"
+                                   helperText="msg:// se vuoi programmare l'invio del tuo messaggio clicca qui!"/>
+
+                        <datePicker id="sentDateField"
+                                    label="Data"
+                                    width="100%"/>
+
+                        <!-- Solo l'ora -->
+                        <timePicker id="sentTimeField"
+                                    label="Ora"
+                                    width="100%"/>
+                        <fileStorageUploadField uploadIcon="UPLOAD" id="allegatoField" dataContainer="messageDc" property="attachment"
+                                                dropAllowed="true" />
+                    </vbox>
+
+<!--                    <hbox id="buttons" justifyContent="AROUND">-->
+<!--                        <button  themeNames="success"-->
+<!--                                 id="invia"-->
+<!--                                 icon="vaadin:comment-o"-->
+<!--                                 text="invia il messaggio"/>-->
+<!--                        <button  themeNames="error"-->
+<!--                                 id="closeButton"-->
+<!--                                 icon="vaadin:comments-o"-->
+<!--                                 text="torna ai messaggi"/>-->
+<!--                    </hbox>-->
+                    <vbox id="buttons" justifyContent="CENTER">
+                        <button alignSelf="CENTER" themeNames="success"
+                                id="invia"
+                                icon="vaadin:comment-o"
+                                text="invia il messaggio"/>
+                        <button alignSelf="CENTER" themeNames="error"
+                                id="closeButton"
+                                icon="vaadin:comments-o"
+                                text="torna ai messaggi"/>
+                    </vbox>
+                </vbox>
+            </vbox>
+        </vbox>
+    </layout>
+</view>

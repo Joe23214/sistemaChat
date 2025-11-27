@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="Visualizza Messaggio">
+    <layout classNames="backgroundnav">
+        <textField classNames="border-primary-50" id="senderName" readOnly="true" />
+        <textArea classNames="border-primary-50" id="messageContent" label="Contenuto" readOnly="true"/>
+        <button id="downloadAttachmentBtn" icon="vaadin:download" visible="false" />
+        <textField classNames="border-primary-50" id="sentAt"  readOnly="true"/>
+    </layout>
+</view>

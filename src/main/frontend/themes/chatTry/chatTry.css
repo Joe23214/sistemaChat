@@ -1,0 +1,236 @@
+.chat-list-background{
+background-color: #FDE99D;
+border: 3px solid black;
+ box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+ border-radius:25px;
+}
+
+.chat-list-message{
+width:75%
+height: 20px;
+background-color:#b9faac;
+margin 5px;
+padding: 15px;
+color: #576355;
+}
+.wrap-text {
+    white-space: normal;  /* abilita il wrap */
+    word-break: break-word; /* spezza parole troppo lunghe */
+    overflow-wrap: break-word; /* compatibilità */
+}
+
+.chat-list-background:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.button-custom{
+color:#7AE150;
+background-color:#4E803A;
+border-radius:15px;
+}
+.chat-popup {
+  position: fixed !important;
+  bottom: 20px;
+  right: 20px;
+  margin: 0 !important;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  background-color: white;
+}
+
+vaadin-dialog-overlay[theme~="custom-position"] {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  width: 400px !important;
+  margin: 0 !important;
+  top: auto !important;
+  left: auto !important;
+  height: 80% !important;
+}
+vaadin-dialog-overlay[theme~="custom-position-left"] {
+   position: fixed !important;
+    bottom: 20px !important;
+    right: calc(20px + 400px + 10px) !important;
+    width: 400px !important;
+    height: 80% !important;
+    margin: 0 !important;
+    top: auto !important;
+    left: auto !important;
+}
+.jmix-main-view-header-actions.spaced-items {
+  padding: 0 16px;
+}
+
+.spaced-element {
+  margin-left: 16px;
+}
+
+.notification-icon {
+  cursor: pointer;
+  margin-left: 16px;
+}
+
+  vaadin-dialog-overlay[theme~="custom-position-left-large"] {
+      position: fixed !important;
+      left: 20px !important;
+      right: auto !important;
+      bottom: 20px !important;
+      top: auto !important;
+      width: 500px !important;
+      height: 80% !important;
+      margin: 0 !important;
+      max-width: none !important;
+      box-sizing: border-box !important;
+  }
+  vaadin-dialog-overlay[theme~="custom-position-left-large"] > div {
+      position: static !important;
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0 !important;
+      box-sizing: border-box !important;
+  }
+.backgroundnav{
+background-color: #FDE99D !important;
+}
+
+vaadin-grid::part(header-cell) {
+    background-color:#b9faac;
+}
+
+
+vaadin-grid::part(body-cell) {
+    background-color: #FDE99D;
+}
+
+vaadin-grid::part(row) {
+    background-color: #FDE99D;
+}
+.notification-icon {
+    cursor: pointer;
+    color: var(--lumo-secondary-text-color);
+}
+
+.notification-icon.unread {
+    color: red;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(2); }
+    100% { transform: scale(1); }
+}
+
+ vaadin-dialog-overlay[theme~="centered-small"] {
+     position: fixed !important;
+     width: 60vw !important;
+     height: 60vh !important;
+     left: calc(50% - 30vw) !important;
+     top: calc(50% - 30vh) !important;
+     margin: 0 !important;
+     right: auto !important;
+     bottom: auto !important;
+     border-radius: 12px !important;
+     background: white !important;
+     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+     z-index: 1501 !important;
+     max-width: none !important;
+     max-height: none !important;
+ }
+
+
+ vaadin-dialog-overlay[theme~="centered-small"] > div {
+     width: 100% !important;
+     height: 100% !important;
+     margin: 0 !important;
+     padding: 0 !important;
+     box-sizing: border-box !important;
+     max-width: none !important;
+     max-height: none !important;
+ }
+
+.main-menu-space-around {
+   display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+.notification-count {
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    border-radius:10px;
+    border: 2px solid red;
+    margin-left: 4px;
+    width: 50px;
+    height:32px;
+}
+.dimensione{
+    width: 50px;
+    height:32px;
+    border:none;
+}
+
+vaadin-dialog-overlay[theme~="fullscreen"] {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    max-width: none !important;
+    max-height: none !important;
+    background-color: white !important;
+    z-index: 10000 !important;
+}
+
+vaadin-dialog-overlay[theme~="fullscreen"] > div {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.unread-label {
+    color: red;
+    font-weight: bold;
+    margin-left: 8px;
+}
+.avatar-img {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+.responsive-refresh-button {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .responsive-refresh-button {
+        display: block;
+    }
+}
+
+.online-icon-green {
+    color: green;
+}
+
+.user-picture {
+    object-fit: contain;
+
+}

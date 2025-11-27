@@ -1,0 +1,17 @@
+{
+  "frontendFolder": "C:/Users/giova/Desktop/Developing/CSM/jmixproject/chatTry/./src/main/frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "C:/Users/giova/Desktop/Developing/CSM/jmixproject/chatTry/./src/main/frontend/generated/jar-resources",
+  "staticOutput": "C:/Users/giova/Desktop/Developing/CSM/jmixproject/chatTry/build/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "C:\\Users\\giova\\Desktop\\Developing\\CSM\\jmixproject\\chatTry\\build\\classes\\META-INF\\VAADIN\\config",
+  "frontendBundleOutput": "C:\\Users\\giova\\Desktop\\Developing\\CSM\\jmixproject\\chatTry\\build\\classes\\META-INF\\VAADIN\\webapp",
+  "devBundleOutput": "C:/Users/giova/Desktop/Developing/CSM/jmixproject/chatTry/build/dev-bundle/webapp",
+  "devBundleStatsOutput": "C:/Users/giova/Desktop/Developing/CSM/jmixproject/chatTry/build/dev-bundle/config",
+  "jarResourcesFolder": "C:/Users/giova/Desktop/Developing/CSM/jmixproject/chatTry/./src/main/frontend/generated/jar-resources",
+  "themeName": "chatTry",
+  "clientServiceWorkerSource": "C:\\Users\\giova\\Desktop\\Developing\\CSM\\jmixproject\\chatTry\\build\\sw.ts",
+  "pwaEnabled": true,
+  "offlineEnabled": true,
+  "offlinePath": "'.'"
+}

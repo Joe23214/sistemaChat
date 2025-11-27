@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://Send Message">
+    <data>
+        <instance id="messagesDc"
+                  class="com.company.chattry.entity.Message">
+            <fetchPlan extends="_base">
+                <property name="sender" fetchPlan="_base"/>
+                <property name="reciver" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="messageDl"/>
+        </instance>
+        <collection id="usersDc" class="com.company.chattry.entity.User">
+            <fetchPlan extends="_base"/>
+            <loader id="usersDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from User e where e.id <> :currentUserId]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+
+    <layout>
+        <h3 themeNames="primary" alignSelf="CENTER" text=" Scrivi il tuo nuovo messaggio" > </h3>
+        <vbox id="mainContainer"
+              width="90%"
+              alignItems="CENTER"
+              justifyContent="START"
+              spacing="true" >
+
+            <!-- Contenitore colonna con larghezza 75% -->
+            <vbox id="contentBox" width="75%" spacing="true" alignItems="STRETCH">
+
+                <entityComboBox helperText="Seleziona il destinatario"  classNames="backgroundnav" id="reciverComboBox"
+                                itemsContainer="usersDc"
+                                dataContainer="messagesDc"
+                                property="reciver">
+                    <actions>
+                        <action id="entityClear" type="entity_clear"/>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityOpen" type="entity_open"/>
+                    </actions>
+                </entityComboBox>
+
+                <entityPicker classNames="backgroundnav" id="senderField"
+                              dataContainer="messagesDc"
+                              property="sender">
+                    <actions>
+                        <action id="entityLookupAction" type="entity_lookup"/>
+                        <action id="entityClearAction" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+
+                <textArea classNames="backgroundnav" id="contentField"
+                          dataContainer="messagesDc"
+                          property="content"
+                          placeholder="Scrivi qui il messaggio..."
+                          height="150px"/>
+
+                <vbox justifyContent="CENTER" >
+
+                    <checkbox  alignSelf="BASELINE" id="timeProgrammer"
+                               helperText="msg:// se vuoi programmare l'invio del tuo messaggio clicca qui!"/>
+
+                    <datePicker id="sentDateField"
+                                label="Data"
+                                width="100%"/>
+
+                    <!-- Solo l'ora -->
+                    <timePicker id="sentTimeField"
+                                label="Ora"
+                                width="100%"/>
+                    <fileStorageUploadField uploadIcon="UPLOAD" id="allegatoField" dataContainer="messagesDc" property="attachment"
+                                           dropAllowed="true" />
+
+                </vbox>
+
+                <vbox id="buttons" justifyContent="CENTER">
+                    <button alignSelf="CENTER" themeNames="success"
+                            id="invia"
+                            icon="vaadin:comment-o"
+                            text="invia il messaggio"/>
+                    <button alignSelf="CENTER" themeNames="error"
+                            id="closeButton"
+                            icon="vaadin:comments-o"
+                            text="torna ai messaggi"/>
+                </vbox>
+<!--                <hbox -->
+<!--                      -->
+<!--                      justifyContent="AROUND" >-->
+<!--                    -->
+<!--                </hbox>-->
+            </vbox>
+        </vbox>
+    </layout>
+</view>

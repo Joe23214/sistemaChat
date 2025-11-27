@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="FacetManager">
+    <facet type="jpa" name="JPA">
+      <configuration>
+        <setting name="validation-enabled" value="true" />
+        <setting name="provider-name" value="Jmix EclipseLink" />
+        <datasource-mapping />
+        <naming-strategy-map />
+      </configuration>
+    </facet>
+  </component>
+  <component name="JmixProjectModulesStateV2">
+    <option name="hasState" value="true" />
+    <option name="moduleState">
+      <JmixModuleStateV2>
+        <option name="artifactGroup" value="com.company" />
+        <option name="artifactName" value="chatTry" />
+        <option name="artifactVersion" value="0.0.1-SNAPSHOT" />
+        <option name="bomVersion" value="2.5.2" />
+        <option name="buildFilePath" value="C:\Users\giova\Desktop\Developing\CSM\jmixproject\chatTry\build.gradle" />
+        <option name="buildScriptDependencies">
+          <Dependency configuration="classpath" group="io.jmix" name="io.jmix.gradle.plugin" version="2.5.2" />
+          <Dependency configuration="classpath" group="org.jetbrains.gradle.plugin.idea-ext" name="org.jetbrains.gradle.plugin.idea-ext.gradle.plugin" version="1.1.9" />
+        </option>
+        <option name="buildSystemName" value="Gradle" />
+        <option name="classesDir" value="C:\Users\giova\Desktop\Developing\CSM\jmixproject\chatTry\build\classes\java\main" />
+        <option name="dependencies">
+          <Dependency configuration="implementation" group="io.jmix.core" name="jmix-core-starter" />
+          <Dependency configuration="implementation" group="io.jmix.data" name="jmix-eclipselink-starter" />
+          <Dependency configuration="implementation" group="io.jmix.security" name="jmix-security-starter" />
+          <Dependency configuration="implementation" group="io.jmix.security" name="jmix-security-flowui-starter" />
+          <Dependency configuration="implementation" group="io.jmix.security" name="jmix-security-data-starter" />
+          <Dependency configuration="implementation" group="io.jmix.localfs" name="jmix-localfs-starter" />
+          <Dependency configuration="implementation" group="io.jmix.flowui" name="jmix-flowui-starter" />
+          <Dependency configuration="implementation" group="io.jmix.flowui" name="jmix-flowui-data-starter" />
+          <Dependency configuration="implementation" group="io.jmix.flowui" name="jmix-flowui-themes" />
+          <Dependency configuration="implementation" group="io.jmix.datatools" name="jmix-datatools-starter" />
+          <Dependency configuration="implementation" group="io.jmix.datatools" name="jmix-datatools-flowui-starter" />
+          <Dependency configuration="implementation" group="io.jmix.core" name="jmix-core" version="2.3.3" />
+          <Dependency configuration="implementation" group="io.jmix.flowui" name="jmix-flowui" version="2.3.3" />
+          <Dependency configuration="implementation" group="io.jmix.flowui" name="jmix-flowui-starter" version="2.3.3" />
+          <Dependency configuration="implementation" group="io.jmix.rest" name="jmix-rest" />
+          <Dependency configuration="implementation" group="org.springframework.boot" name="spring-boot-starter-web" />
+          <Dependency configuration="implementation" group="io.jmix.translations" name="jmix-translations-it" />
+          <Dependency configuration="implementation" group="org.hsqldb" name="hsqldb" />
+          <Dependency configuration="testImplementation" group="org.springframework.boot" name="spring-boot-starter-test">
+            <ExcludeRule group="org.junit.vintage" module="junit-vintage-engine" />
+          </Dependency>
+          <Dependency configuration="testImplementation" group="io.jmix.flowui" name="jmix-flowui-test-assist" />
+          <Dependency configuration="implementation platform" group="io.jmix.bom" name="jmix-bom" version="2.5.2" />
+        </option>
+        <option name="jarFile" value="C:\Users\giova\Desktop\Developing\CSM\jmixproject\chatTry\build\libs\chatTry-0.0.1-SNAPSHOT-plain.jar" />
+        <option name="jmixVersion" value="2.5.2" />
+        <option name="mavenLocalURI" value="file:/$MAVEN_REPOSITORY$" />
+        <option name="moduleName" value="chatTry" />
+        <option name="rootBuildFilePath" value="C:\Users\giova\Desktop\Developing\CSM\jmixproject\chatTry\build.gradle" />
+        <option name="rootProjectName" value="chatTry" />
+        <option name="stateBuildScriptRepositories">
+          <Repository url="https://plugins.gradle.org/m2" />
+        </option>
+        <option name="stateRepositories">
+          <Repository url="https://repo.maven.apache.org/maven2/" />
+          <Repository url="https://global.repo.jmix.io/repository/public" />
+        </option>
+      </JmixModuleStateV2>
+    </option>
+  </component>
+</module>

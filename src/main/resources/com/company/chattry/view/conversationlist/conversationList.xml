@@ -1,0 +1,48 @@
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://conversationlist.title">
+
+    <data>
+        <collection id="messagesDc" class="com.company.chattry.entity.Message">
+            <fetchPlan>
+                <property name="attachment"/>
+                <property name="rl"/>
+                <property name="content"/>
+                <property name="sentAt"/>
+                <property name="sender">
+                    <property name="firstName"/>
+                    <property name="lastName"/>
+                    <property name="username"/>
+                </property>
+            </fetchPlan>
+            <loader id="messagesDl">
+                <query>
+                    <![CDATA[
+                    select m from Message m
+where (
+       (m.sender.id = :senderId and m.reciver.id = :receiverId)
+       or
+       (m.sender.id = :receiverId and m.reciver.id = :senderId)
+      )
+  and m.sentAt <= :now
+order by m.sentAt
+
+                    ]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+
+    <layout>
+        <dataGrid classNames="backgroundnav" id="messagesTable" dataContainer="messagesDc" width="100%" height="400px" emptyStateText="No messages found">
+            <columns>
+               <!-- <column property="rl" header="msg://Ricevuto\letto" ></column> funzionante ma senza icone-->
+                <column property="sender.firstName" header="Sender"/>
+                <column property="content" header="Content"/>
+                <column property="sentAt" header="Sent At"/>
+            </columns>
+        </dataGrid>
+        <button id="close" text="Torna ai tuoi ultimi messaggi" ></button>
+    </layout>
+
+</view>

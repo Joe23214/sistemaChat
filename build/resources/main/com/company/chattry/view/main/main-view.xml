@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mainView xmlns="http://jmix.io/schema/flowui/main-view"
+          title="msg://MainView.title">
+
+    <data>
+        <instance id="userDc" class="com.company.chattry.entity.User">
+            <fetchPlan extends="_base"/>
+            <loader id="userDl">
+                <query><![CDATA[
+                    select u from User u where u.id = :currentUserId
+                ]]></query>
+            </loader>
+        </instance>
+    </data>
+    <actions>
+        <action id="logoutAction" type="logout"/>
+    </actions>
+
+    <appLayout>
+
+        <navigationBar >
+            <header id="header" classNames="jmix-main-view-header backgroundnav" width="100%">
+
+                <h2 id="applicationTitle"
+                    classNames="jmix-main-view-application-title">
+                    <anchor id="baseLink"
+                            href="."
+                            text="msg://applicationTitle.text"
+                            classNames="jmix-main-view-application-title-base-link"/>
+                </h2>
+
+                <horizontalMenu id="mainMenu"
+                                classNames="jmix-main-view-horizontal-menu main-menu-space-around ms-xl"/>
+
+                <hbox id="headerActions"
+                      classNames="jmix-main-view-header-actions spaced-items"
+                      spacing="true"
+                      width="100%"
+                      alignItems="CENTER">
+
+
+                    <!--<label id="stretch"/>-->
+                    <hbox id="stretch" ></hbox>
+
+                    <icon id="notificationIcon"
+                          icon="vaadin:bell"
+                          classNames="notification-icon"/>
+                    <textField id="notificationCount" classNames=" me-xl notification-count dimensione"  readOnly="true"></textField>
+
+                    <userIndicator id="userIndicator" classNames="ms-xl spaced-element"/>
+                    <icon id="profileIcon"
+                          icon="vaadin:user"/>
+                    <image id="profileimgmini" classNames="avatar-img me-xl" width="100%" height="100%" property="avatar" dataContainer="userDc"/>
+                    <button id="logoutButton"
+                            action="logoutAction"
+                            classNames="jmix-logout-button spaced-element"/>
+                </hbox>
+
+            </header>
+        </navigationBar>
+
+        <initialLayout>
+            <!-- contenuto dinamico -->
+            <hbox justifyContent="CENTER">
+                <hbox justifyContent="CENTER">
+                <h1 alignSelf="CENTER" text="Titolo!" ></h1>
+                </hbox>
+            <vbox>
+            <h2 classNames="m-xl" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. " ></h2>
+
+            </vbox>
+                <vbox>
+                    <icon icon="vaadin:clipboard-text" classNames="mt-xl" css="width: 700px; height: 700px;" ></icon>
+                </vbox>
+            </hbox>
+       </initialLayout>
+
+    </appLayout>
+</mainView>

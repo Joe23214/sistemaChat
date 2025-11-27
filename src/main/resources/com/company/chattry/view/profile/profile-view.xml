@@ -1,0 +1,74 @@
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://profileView.title">
+
+    <data>
+        <instance id="userDc" class="com.company.chattry.entity.User">
+            <fetchPlan extends="_base"/>
+            <loader id="userDl">
+                <query><![CDATA[
+                    select u from User u where u.id = :currentUserId
+                ]]></query>
+            </loader>
+        </instance>
+        <collection id="attachmentsDc" class="com.company.chattry.entity.Message">
+            <fetchPlan>
+                <property name="attachment"/>
+                <property name="sender">
+                    <property name="username"/>
+                </property>
+                <property name="sentAt"/>
+            </fetchPlan>
+            <loader id="attachmentsDl">
+                <query><![CDATA[
+                    select m from Message m
+                    where m.reciver.id = :userId and m.attachment is not null and lower(m.rl) = 'l'
+                    order by m.sentAt desc
+                ]]></query>
+            </loader>
+        </collection>
+    </data>
+
+    <layout spacing="true">
+        <image alignSelf="CENTER" classNames="m-xl p-m" id="avatarImage" width="20%" height="20%" dataContainer="userDc" property="avatar"/>
+        <!-- Visualizzazione dati (sempre visibile) -->
+        <formLayout id="readOnlyForm" dataContainer="userDc">
+
+            <textField id="usernameFieldRO" property="username" readOnly="true"/>
+            <textField id="firstNameFieldRO" property="firstName" readOnly="true"/>
+            <textField id="lastNameFieldRO" property="lastName" readOnly="true"/>
+            <textField id="emailFieldRO" property="email" readOnly="true"/>
+            <textField id="timeZoneFieldRO" property="timeZoneId" readOnly="true"/>
+
+        </formLayout>
+
+
+        <hr id="line" visible="false" ></hr>
+        <hbox spacing="true">
+            <button id="allegati" text="Vedi i tuoi allegati" ></button>
+            <button id="editBtn" text="Modifica profilo"/>
+            <button id="saveBtn" text="Salva" visible="false"/>
+            <button id="cancelBtn" text="Annulla" visible="false"/>
+        </hbox>
+        <formLayout id="editForm" dataContainer="userDc" classNames="m-xl" visible="false">
+            <textField id="usernameField" property="username" readOnly="true"/>
+            <textField id="firstNameField" property="firstName"/>
+            <textField id="lastNameField" property="lastName"/>
+            <textField id="emailField" property="email"/>
+            <comboBox id="timeZoneField" property="timeZoneId" clearButtonVisible="true"/>
+            <checkbox id="activeField" property="active"/>
+            <fileStorageUploadField id="avatarField" property="avatar"/>
+        </formLayout>
+        <vbox id="attachmentsSection" visible="false" spacing="true" margin="true" classNames="m-s" css="border: 1px solid #ccc; padding: 10px;">
+           <span text="I tuoi allegati" ></span>
+            <dataGrid id="attachmentsTable" dataContainer="attachmentsDc" width="100%" height="300px" emptyStateText="Nessun allegato trovato">
+                <columns>
+                    <column property="attachment" header="Nome File"/>
+                    <column property="sender.username" header="Inviato da"/>
+                    <column property="sentAt" header="Data Invio"/>
+                </columns>
+            </dataGrid>
+        </vbox>
+
+        <button alignSelf="CENTER" classNames="m-xl" id="home" text="Torna alla home" ></button>
+    </layout>
+</view>

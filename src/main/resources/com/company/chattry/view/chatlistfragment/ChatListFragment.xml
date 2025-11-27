@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/flowui/fragment">
+    <data>
+        <instance id="item" class="com.company.chattry.entity.Message"/>
+    </data>
+    <content>
+        <vbox id="root" alignSelf="CENTER" classNames=" chat-list-background ms-xl m-m" height="90%" width="90%">
+
+            <!-- Top: Avatar + Name -->
+            <hbox alignItems="CENTER" justifyContent="BETWEEN" width="100%">
+                <image id="avatarImage"
+                       width="60px"
+                       height="60px"
+                       classNames="rounded imgz" dataContainer="item" property="sender.avatar"/>
+                <span id="unreadLabel" classNames="unread-label" visible="false">Unread</span>
+                <icon id="onlineIcon" icon="vaadin:circle" css="color: gray;" visible="false"/>
+                <span  id="onlineStatusLabel" classNames="ms-2" visible="false"/>
+                <span id="senderMsg"
+                      classNames="chat-list-message m-0"
+                      dataContainer="item"
+                      property="sender"/>
+            </hbox>
+
+            <!-- Message content -->
+            <span width="100%"
+                  id="contentMsg"
+                  dataContainer="item"
+                  property="content"
+                  classNames="wrap-text"/>
+
+            <!-- Bottom: Reply + Center Button + SentAt -->
+            <hbox width="100%" justifyContent="BETWEEN" alignItems="CENTER">
+                <button text="Rispondi" classNames="button-custom" id="replyBtn" />
+
+               <!-- <label width="100%" flexGrow="1"/>-->
+                <hbox width="100%" ></hbox>
+
+                <button  icon="vaadin:comments" classNames="border-primary-50 text text-primary backdrop-blur" id="centerBtn" />
+                <button id="attachment" visible="true" icon="vaadin:download"></button>
+               <!-- <label width="100%" flexGrow="1"/>-->
+                <hbox width="100%" ></hbox>
+                <span id="sendedAtMsg" dataContainer="item" property="sentAt"/>
+            </hbox>
+
+        </vbox>
+    </content>
+</fragment>

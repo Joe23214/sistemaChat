@@ -1,0 +1,18 @@
+{
+  "productionMode": false,
+  "eagerServerLoad": false,
+  "npmFolder": "C:\\Users\\giova\\Desktop\\Developing\\CSM\\jmixproject\\chatTry",
+  "node.version": "v22.13.1",
+  "node.download.root": "https://nodejs.org/dist/",
+  "frontendFolder": "C:\\Users\\giova\\Desktop\\Developing\\CSM\\jmixproject\\chatTry\\.\\src\\main\\frontend",
+  "connect.javaSourceFolder": "C:\\Users\\giova\\Desktop\\Developing\\CSM\\jmixproject\\chatTry\\src\\main\\java",
+  "javaResourceFolder": "C:\\Users\\giova\\Desktop\\Developing\\CSM\\jmixproject\\chatTry\\src\\main\\resources",
+  "connect.applicationProperties": "C:\\Users\\giova\\Desktop\\Developing\\CSM\\jmixproject\\chatTry\\src\\main\\resources\\application.properties",
+  "connect.openApiFile": "C:\\Users\\giova\\Desktop\\Developing\\CSM\\jmixproject\\chatTry\\build\\generated-resources\\openapi.json",
+  "project.frontend.generated": "C:\\Users\\giova\\Desktop\\Developing\\CSM\\jmixproject\\chatTry\\.\\src\\main\\frontend\\generated",
+  "pnpm.enable": false,
+  "bun.enable": false,
+  "require.home.node": false,
+  "build.folder": "build",
+  "react.enable": true
+}

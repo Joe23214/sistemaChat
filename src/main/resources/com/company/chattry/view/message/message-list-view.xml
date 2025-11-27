@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://messageListView.title">
+
+    <data>
+        <collection id="messagesDc"
+                    class="com.company.chattry.entity.Message">
+            <fetchPlan extends="_base">
+                <property name="sender" fetchPlan="_base"/>
+                <property name="reciver" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="messagesDl" readOnly="true">
+                <query>
+                    <![CDATA[
+                        select m from Message m
+                        where m.reciver = :currentUser
+                         and m.sentAt <= :now
+                        order by m.sentAt desc
+                    ]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout classNames="my-component">
+        <hbox id="x" classNames="hide-on-mobile" >
+            <genericFilter maxHeight="70%" height="20%" id="genericFilter"
+                           dataLoader="messagesDl">
+                <properties include=".*"/>
+            </genericFilter>
+
+        </hbox>
+        <hbox id="buttonsPanel" classNames="buttons-panel"  >
+            <!--            <button id="createButton" action="projectsDataGrid.createAction"/>-->
+            <!--            <button id="editButton" action="projectsDataGrid.editAction"/>-->
+            <!--            <button id="removeButton" action="projectsDataGrid.removeAction"/>-->
+
+
+        <hbox alignItems="STRETCH">
+            <button  text="invia un nuovo messaggio" id="sendNewMessage"  classNames="button-custom m-xl" icon="vaadin:enter-arrow"/>
+            <button alignSelf="END" icon="vaadin:refresh" id="refreshcustom" ></button>
+            <h3  alignSelf="CENTER" classNames="m-xl"  text="I tuoi ultimi messaggi!"></h3>
+       </hbox>
+            <simplePagination id="pagination" dataLoader="messagesDl"/>
+        </hbox>
+
+        <virtualList width="100%" height="100%" id="myProjectList"  itemsContainer="messagesDc">
+            <fragmentRenderer class="com.company.chattry.view.chatlistfragment.Chatlistfragment"/>
+        </virtualList>
+        <!--        <dataGrid id="projectsDataGrid"-->
+        <!--                  width="100%"-->
+        <!--                  minHeight="20em"-->
+        <!--                  dataContainer="projectsDc"-->
+        <!--                  columnReorderingAllowed="true">-->
+
+        <!--        </dataGrid>-->
+        <hbox id="lookupActions" visible="false">
+            <button id="selectButton" action="selectAction"/>
+            <button id="discardButton" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="chatTry">
+        <!-- Salta tutto se la colonna esiste già -->
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="MESSAGE" columnName="RL"/>
+            </not>
+        </preConditions>
+
+        <!-- 1. Aggiungi la colonna RL se non esiste -->
+        <addColumn tableName="MESSAGE">
+            <column name="RL" type="VARCHAR(1)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="2" author="chatTry">
+        <!-- 2. Aggiorna tutti i record con RL = NULL a RL = 'R' -->
+        <update tableName="MESSAGE">
+            <column name="RL" value="R"/>
+            <where>RL IS NULL</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="3" author="chatTry">
+        <!-- 3. Rendi la colonna RL obbligatoria (NOT NULL) -->
+        <addNotNullConstraint tableName="MESSAGE"
+                              columnName="RL"
+                              columnDataType="VARCHAR(1)"/>
+    </changeSet>
+
+</databaseChangeLog>
